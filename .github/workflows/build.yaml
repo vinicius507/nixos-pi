@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install qemu-user-static for cross-compilation
+        run: |
+          sudo apt update
+          sudo apt install -y qemu-user-static
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: Run `nix build`
