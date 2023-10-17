@@ -6,4 +6,9 @@
       ./core/users.nix
     ];
   };
+  services = {
+    imports = [
+      ./services/openssh.nix
+    ];
+  };
 }
