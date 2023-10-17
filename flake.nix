@@ -11,14 +11,24 @@
   } @ inputs: let
     system = "aarch64-linux";
   in {
-    nixosConfigurations.pi = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./hardware-configuration.nix
-        ./configuration.nix
-      ];
-      specialArgs = {inherit inputs;};
+    packages.${system}.default = self.nixosConfigurations.sd-image.config.system.build.sdImage;
+    nixosConfigurations = {
+      pi = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./hardware-configuration.nix
+          ./configuration.nix
+          nixos-hardware.nixosModules.raspberry-pi-4
+        ];
+        specialArgs = {inherit inputs;};
+      };
+      sd-image = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./sd-image.configuration.nix
+          nixos-hardware.nixosModules.raspberry-pi-4
+        ];
+      };
     };
-    nixosModules = import ./modules;
   };
 }
