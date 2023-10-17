@@ -16,4 +16,4 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: Run `nix build`
-        run: nix build .#nixosConfigurations.pi.config.system.build.toplevel
+        run: nix build --system aarch64-linux .#nixosConfigurations.pi.config.system.build.toplevel
