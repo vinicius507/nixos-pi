@@ -4,7 +4,6 @@
     openFirewall = true;
     settings = {
       bind_port = 3000;
-      schema_version = 24;
       dns = {
         bind_hosts = ["0.0.0.0"];
         ratelimit = 100;
