@@ -8,6 +8,8 @@
   };
   services = {
     imports = [
+      ./services/adguardhome.nix
+      ./services/nginx.nix
       ./services/openssh.nix
     ];
   };
