@@ -13,13 +13,10 @@
   in {
     nixosConfigurations.pi = nixpkgs.lib.nixosSystem {
       inherit system;
-      modules =
-        [
-          nixos-hardware.nixosModules.raspberry-pi-4
-          ./hardware-configuration.nix
-          ./configuration.nix
-        ]
-        ++ builtins.attrValues self.nixosModules;
+      modules = [
+        ./hardware-configuration.nix
+        ./configuration.nix
+      ];
       specialArgs = {inherit inputs;};
     };
     nixosModules = import ./modules;

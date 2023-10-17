@@ -2,7 +2,14 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  inherit (inputs) nixpkgs nixos-hardware;
+in {
+  imports = [
+    nixos-hardware.nixosModules.raspberry-pi-4
+    "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+  ];
+
   boot.tmp.useTmpfs = true;
 
   documentation.man.enable = true;
@@ -36,6 +43,8 @@
       ];
     };
   };
+
+  sdImage.compressImage = false;
 
   system.stateVersion = "23.11";
 }
