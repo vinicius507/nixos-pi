@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./hardware-configuration.nix
     ./modules/locale.nix
     ./modules/networking.nix
     ./modules/users.nix

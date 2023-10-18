@@ -16,8 +16,7 @@
       pi = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./hardware-configuration.nix
-          ./configuration.nix
+          ./hosts/pi
           nixos-hardware.nixosModules.raspberry-pi-4
         ];
         specialArgs = {inherit inputs;};
@@ -25,7 +24,7 @@
       sd-image = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./sd-image.configuration.nix
+          ./hosts/sd-image
           nixos-hardware.nixosModules.raspberry-pi-4
         ];
       };
