@@ -15,11 +15,8 @@ jobs:
           sudo apt install -y qemu-user-static tree
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-        with:
-          extra_conf: |
-            system = aarch64-linux
       - name: Run `nix build`
-        run: nix build && tree
+        run: nix build --system aarch64-linux && tree
 
   sd-image:
     name: Build sd-image configuration
@@ -32,8 +29,5 @@ jobs:
           sudo apt install -y qemu-user-static tree
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-        with:
-          extra_conf: |
-            system = aarch64-linux
       - name: Run `nix build`
-        run: nix build .#sd-image && tree
+        run: nix build --system aarch64-linux .#sd-image && tree
