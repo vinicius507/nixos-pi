@@ -10,8 +10,16 @@ in {
     "${outPath}/modules/services/openssh.nix"
   ];
 
-  networking.hostName = "nixos-install";
   users.mutableUsers = false;
+  networking.hostName = "nixos-install";
+  nixpkgs = {
+    hostPlatform = "aarch64-linux";
+    overlays = [
+      (final: prev: {
+        makeModulesClosure = x: prev.makeModulesClosure (x // {allowMissing = true;});
+      })
+    ];
+  };
 
   system.stateVersion = "23.05";
 }
