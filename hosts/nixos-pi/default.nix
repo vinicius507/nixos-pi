@@ -2,15 +2,18 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  # NOTE: self.outPath leads to infinite recursion (GH: https://github.com/NixOS/nix/issues/9159)
+  outPath = ../../.;
+in {
   imports = [
     ./hardware-configuration.nix
-    ./modules/locale.nix
-    ./modules/networking.nix
-    ./modules/users.nix
-    ./modules/services/adguardhome.nix
-    ./modules/services/nginx.nix
-    ./modules/services/openssh.nix
+    "${outPath}/modules/locale.nix"
+    "${outPath}/modules/networking.nix"
+    "${outPath}/modules/users.nix"
+    "${outPath}/modules/services/adguardhome.nix"
+    "${outPath}/modules/services/nginx.nix"
+    "${outPath}/modules/services/openssh.nix"
   ];
 
   boot.tmp.useTmpfs = true;
