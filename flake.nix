@@ -11,7 +11,10 @@
   } @ inputs: let
     system = "aarch64-linux";
   in {
-    packages.${system}.default = self.nixosConfigurations.sd-image.config.system.build.sdImage;
+    packages.${system} = {
+      default = self.nixosConfigurations.pi.config.system.build.toplevel;
+      sd-image = self.nixosConfigurations.sd-image.config.system.build.sdImage;
+    };
     nixosConfigurations = {
       pi = nixpkgs.lib.nixosSystem {
         inherit system;
