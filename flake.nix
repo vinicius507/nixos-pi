@@ -4,6 +4,11 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
+  nixConfig = {
+    extra-substituters = "https://myriad-pi.cachix.org";
+    trusted-public-keys = "myriad-pi.cachix.org-1:DkbTl3qDCJyNkt5rv8nrNqKAtLdzZMZ1rhagt9kWG9U=";
+  };
+
   outputs = {
     self,
     nixpkgs,
