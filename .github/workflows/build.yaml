@@ -2,6 +2,8 @@ on:
   pull_request:
   push:
     branches: [main]
+  release:
+    types: [created]
 
 jobs:
   nixos-pi:
@@ -39,3 +41,9 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Run `nix build`
         run: nix build --system aarch64-linux .#sd-image && tree
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        if: github.event_name == 'release'
+        with:
+          name: sd-image
+          path: result/sd-image/*.img.zst          
