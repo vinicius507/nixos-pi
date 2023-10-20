@@ -7,13 +7,15 @@
   outPath = ../../.;
 in {
   imports = [
+    ./services/adguard.nix
+    ./services/nginx.nix
     ./hardware-configuration.nix
-    "${outPath}/modules/locale.nix"
-    "${outPath}/modules/networking.nix"
-    "${outPath}/modules/users.nix"
-    "${outPath}/modules/services/adguardhome.nix"
-    "${outPath}/modules/services/nginx.nix"
-    "${outPath}/modules/services/openssh.nix"
+
+    "${outPath}/hosts/shared/locale.nix"
+    "${outPath}/hosts/shared/networking.nix"
+    "${outPath}/hosts/shared/tailscale.nix"
+    "${outPath}/hosts/shared/users.nix"
+    "${outPath}/hosts/shared/services/openssh.nix"
   ];
 
   boot.tmp.useTmpfs = true;

@@ -4,10 +4,11 @@
 in {
   imports = [
     "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
-    "${outPath}/modules/locale.nix"
-    "${outPath}/modules/networking.nix"
-    "${outPath}/modules/users.nix"
-    "${outPath}/modules/services/openssh.nix"
+    "${outPath}/hosts/shared/locale.nix"
+    "${outPath}/hosts/shared/networking.nix"
+    "${outPath}/hosts/shared/tailscale.nix"
+    "${outPath}/hosts/shared/users.nix"
+    "${outPath}/hosts/shared/services/openssh.nix"
   ];
 
   users.mutableUsers = false;
