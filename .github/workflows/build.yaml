@@ -41,7 +41,7 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Run `nix build`
         run: nix build --system aarch64-linux .#sd-image && tree
-      - name: Upload Artifacts
+      - name: Release
         uses: softprops/action-gh-release@v1
         if: github.event_name == 'release'
         with:
