@@ -6,9 +6,9 @@ in {
     "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
-    "${outPath}/hosts/shared/tailscale.nix"
     "${outPath}/hosts/shared/users.nix"
     "${outPath}/hosts/shared/services/openssh.nix"
+    "${outPath}/hosts/shared/services/tailscale.nix"
   ];
 
   users.mutableUsers = false;

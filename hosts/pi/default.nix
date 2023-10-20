@@ -7,9 +7,10 @@
   outPath = ../../.;
 in {
   imports = [
-    ./services/adguard.nix
-    ./services/nginx.nix
     ./hardware-configuration.nix
+
+    ./services/adguardhome.nix
+    ./services/nginx.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
