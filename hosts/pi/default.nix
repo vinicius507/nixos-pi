@@ -14,9 +14,9 @@ in {
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
-    "${outPath}/hosts/shared/tailscale.nix"
     "${outPath}/hosts/shared/users.nix"
     "${outPath}/hosts/shared/services/openssh.nix"
+    "${outPath}/hosts/shared/services/tailscale.nix"
   ];
 
   boot.tmp.useTmpfs = true;
