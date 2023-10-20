@@ -42,8 +42,7 @@ jobs:
       - name: Run `nix build`
         run: nix build --system aarch64-linux .#sd-image && tree
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: softprops/action-gh-release@v1
         if: github.event_name == 'release'
         with:
-          name: sd-image
-          path: result/sd-image/*.img.zst          
+          files: result/sd-image/*.img.zst
