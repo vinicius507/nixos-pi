@@ -15,7 +15,7 @@
   systemd.services.transmission.serviceConfig.MemoryMax = "20%";
   services.nginx.virtualHosts."transmission.dezano.io" = {
     locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString config.services.transmission.port}";
+      proxyPass = "http://127.0.0.1:${toString config.services.transmission.settings.rpc-port}";
     };
   };
 }
