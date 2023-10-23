@@ -3,6 +3,7 @@
     isNormalUser = true;
     initialPassword = "password"; # TODO: change to hashedPasswordFile
     extraGroups = [
+      "media"
       "wheel"
     ];
     openssh.authorizedKeys.keys = [
