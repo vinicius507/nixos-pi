@@ -10,6 +10,7 @@ in {
     ./hardware-configuration.nix
 
     ./services/adguardhome.nix
+    ./services/jellyfin.nix
     ./services/nginx.nix
 
     "${outPath}/hosts/shared/locale.nix"
@@ -25,6 +26,8 @@ in {
   documentation.dev.enable = true;
 
   networking.hostName = "pi";
+
+  users.groups.media = {}; # NOTE: media group for media server applications
 
   nixpkgs.config.allowUnfree = true;
 
