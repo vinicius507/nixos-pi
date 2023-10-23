@@ -10,6 +10,7 @@ in {
     ./hardware-configuration.nix
 
     ./services/adguardhome.nix
+    ./services/flaresolverr.nix
     ./services/jellyfin.nix
     ./services/nginx.nix
     ./services/prowlarr.nix
