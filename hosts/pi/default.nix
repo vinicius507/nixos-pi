@@ -11,6 +11,7 @@ in {
 
     ./services/adguardhome.nix
     ./services/jellyfin.nix
+    ./services/sonarr.nix
     ./services/nginx.nix
 
     "${outPath}/hosts/shared/locale.nix"
