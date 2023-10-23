@@ -14,6 +14,7 @@ in {
     ./services/nginx.nix
     ./services/prowlarr.nix
     ./services/sonarr.nix
+    ./services/transmission.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
