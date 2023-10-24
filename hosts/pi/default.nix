@@ -10,13 +10,8 @@ in {
     ./hardware-configuration.nix
 
     ./services/adguardhome.nix
-    ./services/bazarr.nix
-    ./services/flaresolverr.nix
-    ./services/jellyfin.nix
+    ./services/media-server
     ./services/nginx.nix
-    ./services/prowlarr.nix
-    ./services/sonarr.nix
-    ./services/transmission.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
@@ -31,8 +26,6 @@ in {
   documentation.dev.enable = true;
 
   networking.hostName = "pi";
-
-  users.groups.media = {}; # NOTE: media group for media server applications
 
   nixpkgs.config.allowUnfree = true;
 
