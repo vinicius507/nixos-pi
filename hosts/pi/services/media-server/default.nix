@@ -9,5 +9,5 @@
     ./transmission.nix
   ];
 
-  user.groups.media = {};
+  users.groups.media = {};
 }
