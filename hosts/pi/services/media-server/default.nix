@@ -2,6 +2,7 @@
   imports = [
     ./bazarr.nix
     ./flaresolverr.nix
+    ./flood.nix
     ./jellyfin.nix
     ./prowlarr.nix
     ./radarr.nix
