@@ -1,10 +1,7 @@
 {lib, ...}: {
-  services.jellyfin.enable = true;
-  users.users.jellyfin = {
-    extraGroups = ["media"];
-  };
-  systemd.services.jellyfin = {
-    serviceConfig.UMask = lib.mkForce "0007";
+  services.jellyfin = {
+    enable = true;
+    group = "media";
   };
   services.nginx.virtualHosts."jellyfin.dezano.io" = {
     extraConfig = ''
@@ -14,4 +11,5 @@
       proxyPass = "http://127.0.0.1:8096";
     };
   };
+  systemd.services.jellyfin.serviceConfig.UMask = lib.mkForce "0007";
 }
