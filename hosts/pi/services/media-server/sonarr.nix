@@ -1,7 +1,10 @@
 {
-  services.sonarr = {
-    enable = true;
-    group = "media";
+  services.sonarr.enable = true;
+  users.users.sonarr = {
+    extraGroups = ["media"];
+  };
+  systemd.services.sonarr = {
+    serviceConfig.UMask = "0007";
   };
   services.nginx.virtualHosts."sonarr.dezano.io" = {
     locations."/" = {

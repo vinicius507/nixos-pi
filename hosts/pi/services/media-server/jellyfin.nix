@@ -1,9 +1,11 @@
 {lib, ...}: {
-  services.jellyfin = {
-    enable = true;
-    group = "media";
+  services.jellyfin.enable = true;
+  users.users.jellyfin = {
+    extraGroups = ["media"];
   };
-  systemd.services.jellyfin.serviceConfig.UMask = lib.mkForce "0007";
+  systemd.services.jellyfin = {
+    serviceConfig.UMask = lib.mkForce "0007";
+  };
   services.nginx.virtualHosts."jellyfin.dezano.io" = {
     extraConfig = ''
       client_max_body_size 20M;
