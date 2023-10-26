@@ -3,11 +3,13 @@ let
 in {
   services.adguardhome = {
     enable = true;
-    openFirewall = true;
     settings = {
       inherit bind_port;
       dns = {
-        bind_hosts = ["0.0.0.0"];
+        bind_hosts = [
+          "127.0.0.1"
+          "100.72.47.143"
+        ];
         ratelimit = 100;
       };
     };
