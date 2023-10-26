@@ -12,7 +12,9 @@ in {
       };
     };
   };
-  services.nginx.virtualHosts."adguard.dezano.io".locations."/" = {
-    proxyPass = "http://127.0.0.1:${toString bind_port}";
+  services.nginx.virtualHosts."adguard.dezano.io" = {
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString bind_port}";
+    };
   };
 }
