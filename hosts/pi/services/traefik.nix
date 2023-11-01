@@ -10,16 +10,16 @@
             scheme = "https";
           };
         };
-        websecure = {
-          address = ":443";
-          http.tls.certificates = [
-            {
-              certFile = "/etc/ssl/certs/traefik/dezano.io.crt";
-              keyFile = "/etc/ssl/certs/traefik/dezano.io.key";
-            }
-          ];
-        };
+        websecure.address = ":443";
       };
+    };
+    dynamicConfigOptions = {
+      tls.certificates = [
+        {
+          certFile = "/etc/ssl/certs/traefik/dezano.io.crt";
+          keyFile = "/etc/ssl/certs/traefik/dezano.io.key";
+        }
+      ];
     };
   };
 }
