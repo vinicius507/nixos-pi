@@ -14,9 +14,9 @@ in {
       };
     };
   };
-  services.nginx.virtualHosts."adguard.dezano.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString bind_port}";
-    };
+  services.traefik.dynamicConfigOptions = {
+    http.routers.adguard.rule = "Host(`adguard.dezano.io`)";
+    http.routers.adguard.service = "adguard";
+    http.services.adguard.loadBalancer.servers = [{url = "http://localhost:${toString bind_port}";}];
   };
 }

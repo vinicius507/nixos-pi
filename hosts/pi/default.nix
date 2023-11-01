@@ -11,7 +11,7 @@ in {
 
     ./services/adguardhome.nix
     ./services/media-server
-    ./services/nginx.nix
+    ./services/traefik.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"

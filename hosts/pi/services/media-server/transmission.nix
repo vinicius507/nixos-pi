@@ -11,10 +11,10 @@
       rpc-host-whitelist-enabled = true;
     };
   };
-  services.nginx.virtualHosts."transmission.dezano.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString config.services.transmission.settings.rpc-port}";
-    };
+  services.traefik.dynamicConfigOptions = {
+    http.routers.transmission.rule = "Host(`media.dezano.io`) && PathPrefix(`/transmission`)";
+    http.routers.transmission.service = "transmission";
+    http.services.transmission.loadBalancer.servers = [{url = "http://localhost:${toString config.services.transmission.settings.rpc-port}";}];
   };
   systemd.services.transmission.serviceConfig.MemoryMax = "20%";
 }

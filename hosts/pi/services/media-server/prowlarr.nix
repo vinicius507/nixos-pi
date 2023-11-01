@@ -1,8 +1,8 @@
 {
   services.prowlarr.enable = true;
-  services.nginx.virtualHosts."prowlarr.dezano.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:9696";
-    };
+  services.traefik.dynamicConfigOptions = {
+    http.routers.prowlarr.rule = "Host(`media.dezano.io`) && PathPrefix(`/indexers`)";
+    http.routers.prowlarr.service = "prowlarr";
+    http.services.prowlarr.loadBalancer.servers = [{url = "http://localhost:9696";}];
   };
 }

@@ -22,9 +22,9 @@ in {
       ReadWritePaths = "";
     };
   };
-  services.nginx.virtualHosts."flood.dezano.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString port}";
-    };
+  services.traefik.dynamicConfigOptions = {
+    http.routers.flood.rule = "Host(`media.dezano.io`) && PathPrefix(`/flood`)";
+    http.routers.flood.service = "flood";
+    http.services.flood.loadBalancer.servers = [{url = "http://localhost:${toString port}";}];
   };
 }
