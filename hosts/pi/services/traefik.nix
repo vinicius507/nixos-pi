@@ -2,7 +2,6 @@
   services.traefik = {
     enable = true;
     staticConfigOptions = {
-      certificatesResolvers.vpn.tailscale = {};
       entrypoints = {
         web = {
           address = ":80";
