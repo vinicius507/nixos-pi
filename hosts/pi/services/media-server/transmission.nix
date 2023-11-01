@@ -14,6 +14,8 @@
   services.traefik.dynamicConfigOptions = {
     http.routers.transmission.rule = "Host(`media.dezano.io`) && PathPrefix(`/transmission`)";
     http.routers.transmission.service = "transmission";
+    http.routers.transmission.entryPoints = ["websecure"];
+    http.routers.transmission.tls = {};
     http.services.transmission.loadBalancer.servers = [{url = "http://localhost:${toString config.services.transmission.settings.rpc-port}";}];
   };
   systemd.services.transmission.serviceConfig.MemoryMax = "20%";

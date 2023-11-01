@@ -25,6 +25,8 @@ in {
   services.traefik.dynamicConfigOptions = {
     http.routers.flood.rule = "Host(`media.dezano.io`) && PathPrefix(`/flood`)";
     http.routers.flood.service = "flood";
+    http.routers.flood.entryPoints = ["websecure"];
+    http.routers.flood.tls = {};
     http.services.flood.loadBalancer.servers = [{url = "http://localhost:${toString port}";}];
   };
 }

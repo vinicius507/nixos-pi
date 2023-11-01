@@ -17,6 +17,8 @@ in {
   services.traefik.dynamicConfigOptions = {
     http.routers.adguard.rule = "Host(`adguard.dezano.io`)";
     http.routers.adguard.service = "adguard";
+    http.routers.adguard.entryPoints = ["websecure"];
+    http.routers.adguard.tls = {};
     http.services.adguard.loadBalancer.servers = [{url = "http://localhost:${toString bind_port}";}];
   };
 }
