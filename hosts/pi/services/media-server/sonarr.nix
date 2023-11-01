@@ -4,7 +4,7 @@
     group = "media";
   };
   services.traefik.dynamicConfigOptions = {
-    http.routers.sonarr.rule = "Host(`media.dezano.io`) && PathPrefix(`/shows`)";
+    http.routers.sonarr.rule = "Host(`shows.dezano.io`)";
     http.routers.sonarr.service = "sonarr";
     http.routers.sonarr.entryPoints = ["websecure"];
     http.routers.sonarr.tls = {};

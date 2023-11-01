@@ -23,7 +23,7 @@ in {
     };
   };
   services.traefik.dynamicConfigOptions = {
-    http.routers.flood.rule = "Host(`media.dezano.io`) && PathPrefix(`/flood`)";
+    http.routers.flood.rule = "Host(`flood.dezano.io`)";
     http.routers.flood.service = "flood";
     http.routers.flood.entryPoints = ["websecure"];
     http.routers.flood.tls = {};

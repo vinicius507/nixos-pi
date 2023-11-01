@@ -4,7 +4,7 @@
     group = "media";
   };
   services.traefik.dynamicConfigOptions = {
-    http.routers.radarr.rule = "Host(`media.dezano.io`) && PathPrefix(`/movies`)";
+    http.routers.radarr.rule = "Host(`movies.dezano.io`)";
     http.routers.radarr.service = "radarr";
     http.routers.radarr.entryPoints = ["websecure"];
     http.routers.radarr.tls = {};

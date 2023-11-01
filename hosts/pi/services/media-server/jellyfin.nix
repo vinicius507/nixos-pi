@@ -4,7 +4,7 @@
     group = "media";
   };
   services.traefik.dynamicConfigOptions = {
-    http.routers.jellyfin.rule = "Host(`media.dezano.io`) && PathPrefix(`/stream`)";
+    http.routers.jellyfin.rule = "Host(`media.dezano.io`)";
     http.routers.jellyfin.service = "jellyfin";
     http.routers.jellyfin.entryPoints = ["websecure"];
     http.routers.jellyfin.tls = {};

@@ -10,7 +10,13 @@
             scheme = "https";
           };
         };
-        websecure.address = ":443";
+        websecure = {
+          address = ":443";
+          forwardedHeaders.trustedIPs = [
+            "100.64.0.0/10"
+            "192.168.1.0/24"
+          ];
+        };
       };
     };
     dynamicConfigOptions = {

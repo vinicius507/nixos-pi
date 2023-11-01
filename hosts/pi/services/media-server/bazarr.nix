@@ -4,7 +4,7 @@
     group = "media";
   };
   services.traefik.dynamicConfigOptions = {
-    http.routers.bazarr.rule = "Host(`media.dezano.io`) && PathPrefix(`/subs`)";
+    http.routers.bazarr.rule = "Host(`subs.dezano.io`)";
     http.routers.bazarr.service = "bazarr";
     http.routers.bazarr.entryPoints = ["websecure"];
     http.routers.bazarr.tls = {};
