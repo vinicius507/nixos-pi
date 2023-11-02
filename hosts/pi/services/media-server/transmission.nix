@@ -12,7 +12,7 @@
     };
   };
   services.traefik.dynamicConfigOptions = {
-    http.routers.transmission.rule = "Host(`transmission.dezano.io`) && PathPrefix(`/transmission`)";
+    http.routers.transmission.rule = "Host(`transmission.dezano.io`)";
     http.routers.transmission.service = "transmission";
     http.routers.transmission.entryPoints = ["websecure"];
     http.routers.transmission.tls = {};
