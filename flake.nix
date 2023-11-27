@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/*.tar.gz";
   };
 
   nixConfig = {
