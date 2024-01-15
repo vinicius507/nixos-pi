@@ -1,4 +1,11 @@
 {
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "vinicius@myriad.codes";
+      server = "https://localhost:8000/acme/acme/directory";
+    };
+  };
   services.traefik = {
     enable = true;
     staticConfigOptions = {

@@ -10,6 +10,7 @@ in {
     ./hardware-configuration.nix
 
     ./services/adguardhome.nix
+    ./services/step-ca.nix
     ./services/traefik.nix
 
     "${outPath}/hosts/shared/locale.nix"
@@ -52,6 +53,8 @@ in {
       ];
     };
   };
+
+  sops.defaultSopsFile = ../../secrets/default.yaml;
 
   system.stateVersion = "23.05";
 }

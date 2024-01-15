@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/*.tar.gz";
+    sops-nix.url = "https://flakehub.com/f/Mic92/sops-nix/*.tar.gz";
   };
 
   nixConfig = {
@@ -13,6 +14,7 @@
     self,
     nixpkgs,
     nixos-hardware,
+    sops-nix,
   } @ inputs: let
     system = "aarch64-linux";
   in {
@@ -26,6 +28,7 @@
         modules = [
           ./hosts/pi
           nixos-hardware.nixosModules.raspberry-pi-4
+          sops-nix.nixosModules.sops
         ];
         specialArgs = {inherit inputs;};
       };
