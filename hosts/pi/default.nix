@@ -10,7 +10,6 @@ in {
     ./hardware-configuration.nix
 
     ./services/adguardhome.nix
-    ./services/media-server
     ./services/traefik.nix
 
     "${outPath}/hosts/shared/locale.nix"
