@@ -19,8 +19,8 @@
     fsType = "ext4";
     options = ["noatime"];
   };
-  fileSystems."/media" = {
-    device = "/dev/disk/by-label/media";
+  fileSystems."/mnt/storage" = {
+    device = "/dev/disk/by-label/storage";
     fsType = "ext4";
     options = ["noatime"];
   };
