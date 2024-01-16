@@ -35,6 +35,12 @@ in {
       };
     };
   };
+  services.traefik.dynamicConfigOptions = {
+    http.routers.step-ca.rule = "Host(`ca.dezano.io`)";
+    http.routers.step-ca.service = "step-ca";
+    http.routers.step-ca.entryPoints = ["websecure"];
+    http.services.step-ca.loadBalancer.servers = [{url = "http://localhost:${toString config.services.step-ca.port}";}];
+  };
   sops.secrets = {
     "services/step-ca/root-cert" = {
       owner = config.users.users.step-ca.name;
