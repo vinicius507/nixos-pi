@@ -1,4 +1,5 @@
-{
+{config, ...}: {
+  users.groups.www = {};
   security.acme = {
     acceptTerms = true;
     defaults = {
@@ -8,6 +9,7 @@
   };
   services.traefik = {
     enable = true;
+    group = config.users.groups.www.name;
     staticConfigOptions = {
       entrypoints = {
         web = {
@@ -23,17 +25,27 @@
             "100.64.0.0/10"
             "192.168.1.0/24"
           ];
+          http.tls.certResolver = "step-ca";
+          http.tls.domains = [
+            {
+              main = "dezano.io";
+              sans = ["*.dezano.io"];
+            }
+          ];
+        };
+      };
+      certificatesResolvers = {
+        step-ca.acme = {
+          inherit (config.security.acme.defaults) email;
+          caServer = config.security.acme.defaults.server;
+          storage = "${config.services.traefik.dataDir}/acme.json";
+          tlsChallenge = {};
         };
       };
     };
-    dynamicConfigOptions = {
-      tls.certificates = [
-        {
-          certFile = "/etc/ssl/certs/traefik/dezano.io.crt";
-          keyFile = "/etc/ssl/certs/traefik/dezano.io.key";
-        }
-      ];
-    };
+  };
+  systemd.services.traefik.environment = {
+    LEGO_CA_CERTIFICATES = config.sops.secrets."services/step-ca/root-cert".path;
   };
   networking.firewall.extraCommands = ''
     iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept
