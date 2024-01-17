@@ -10,6 +10,7 @@ in {
     ./hardware-configuration.nix
 
     ./services/adguardhome.nix
+    ./services/keycloak.nix
     ./services/postgres.nix
     ./services/step-ca.nix
     ./services/traefik.nix
