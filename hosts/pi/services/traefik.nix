@@ -26,12 +26,6 @@
             "192.168.1.0/24"
           ];
           http.tls.certResolver = "step-ca";
-          http.tls.domains = [
-            {
-              main = "dezano.io";
-              sans = ["*.dezano.io"];
-            }
-          ];
         };
       };
       certificatesResolvers = {
