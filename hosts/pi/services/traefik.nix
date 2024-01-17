@@ -11,6 +11,7 @@
     enable = true;
     group = config.users.groups.www.name;
     staticConfigOptions = {
+      api.dashboard = true;
       entrypoints = {
         web = {
           address = ":80";
@@ -36,6 +37,11 @@
           tlsChallenge = {};
         };
       };
+    };
+    dynamicConfigOptions.http.routers.traefik = {
+      rule = "Host(`traefik.dezano.io`)";
+      service = "api@internal";
+      entryPoints = ["websecure"];
     };
   };
   systemd.services.traefik.environment = {
