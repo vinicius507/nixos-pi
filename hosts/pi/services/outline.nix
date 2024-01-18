@@ -19,6 +19,11 @@
       userinfoUrl = "${oidcUrl}/userinfo";
     };
   };
+  systemd.services.outline = {
+    environment = {
+      NODE_EXTRA_CA_CERTS = config.sops.secrets."services/step-ca/root-cert".path;
+    };
+  };
   services.traefik.dynamicConfigOptions = {
     http = {
       routers.outline = {

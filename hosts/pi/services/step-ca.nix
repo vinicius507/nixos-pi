@@ -50,7 +50,7 @@ in {
     "services/step-ca/root-cert" = {
       owner = config.users.users.step-ca.name;
       group = config.users.groups.www.name;
-      mode = "0440";
+      mode = "0444";
       restartUnits = ["step-ca.service" "traefik.service"];
     };
     "services/step-ca/intermediate-cert" = {
