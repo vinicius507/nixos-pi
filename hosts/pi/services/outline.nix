@@ -6,8 +6,11 @@
     publicUrl = "https://notes.dezano.io";
     port = 3001;
     storage = {
-      storageType = "local";
-      localRootDir = "/mnt/storage/data/outline";
+      accessKey = "outline";
+      secretKeyFile = config.sops.secrets."services/outline/s3-secret-key".path;
+      uploadBucketUrl = "https://storage.dezano.io";
+      uploadBucketName = "outline-data";
+      region = "sa-east-1";
     };
     oidcAuthentication = let
       oidcUrl = "https://auth.dezano.io/realms/dezano/protocol/openid-connect";
@@ -43,6 +46,10 @@
       group = config.services.outline.group;
     };
     "services/outline/utils-secret" = {
+      owner = config.services.outline.user;
+      group = config.services.outline.group;
+    };
+    "services/outline/s3-secret-key" = {
       owner = config.services.outline.user;
       group = config.services.outline.group;
     };
