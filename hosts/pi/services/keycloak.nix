@@ -14,6 +14,9 @@ in {
       http-host = "127.0.0.1";
     };
   };
+  systemd.services.keycloak = {
+    after = ["postgresql.service"];
+  };
   services.traefik.dynamicConfigOptions = {
     http.routers.keycloak = {
       rule = "Host(`auth.dezano.io`)";
