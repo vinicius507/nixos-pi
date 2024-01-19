@@ -20,7 +20,7 @@
     };
   };
   systemd.services.outline = {
-    after = ["mnt-storage.mount"];
+    after = ["mnt-storage.mount" "postgresql.service"];
     environment = {
       NODE_EXTRA_CA_CERTS = config.sops.secrets."services/step-ca/root-cert".path;
     };
