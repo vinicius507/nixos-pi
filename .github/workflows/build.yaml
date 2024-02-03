@@ -1,9 +1,10 @@
+name: Build Pi configuration
+
 on:
   pull_request:
   push:
     branches: [main]
-  release:
-    types: [created]
+  workflow_dispatch:
 
 jobs:
   nixos-pi:
@@ -22,27 +23,4 @@ jobs:
           name: myriad-pi
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Run `nix build`
-        run: nix build --system aarch64-linux && tree
-
-  sd-image:
-    name: Build sd-image configuration
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install qemu-user-static for cross-compilation
-        run: |
-          sudo apt update
-          sudo apt install -y qemu-user-static tree
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@v12
-        with:
-          name: myriad-pi
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - name: Run `nix build`
-        run: nix build --system aarch64-linux .#sd-image && tree
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: github.event_name == 'release'
-        with:
-          files: result/sd-image/*.img.zst
+        run: nix build --system aarch64-linux
