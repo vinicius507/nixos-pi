@@ -59,6 +59,8 @@ in {
     };
   };
 
+  virtualisation.oci-containers.backend = "docker";
+
   sops.defaultSopsFile = ../../secrets/default.yaml;
 
   system.stateVersion = "23.05";
