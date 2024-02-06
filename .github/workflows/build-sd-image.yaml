@@ -14,7 +14,7 @@ jobs:
           sudo apt install -y qemu-user-static tree
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@v12
+      - uses: cachix/cachix-action@v14
         with:
           name: myriad-pi
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
