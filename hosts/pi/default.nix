@@ -11,6 +11,7 @@ in {
 
     ./services/adguardhome.nix
     ./services/keycloak.nix
+    ./services/memos.nix
     ./services/minio.nix
     ./services/outline.nix
     ./services/postgres.nix
