@@ -11,7 +11,7 @@ jobs:
     name: Build nixos-pi configuration
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install qemu-user-static for cross-compilation
         run: |
           sudo apt update
