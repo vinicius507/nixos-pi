@@ -51,7 +51,7 @@ in {
       owner = config.users.users.step-ca.name;
       group = config.users.groups.www.name;
       mode = "0444";
-      restartUnits = ["step-ca.service" "traefik.service"];
+      restartUnits = ["step-ca.service" "traefik.service" "docker-memos.service"];
     };
     "services/step-ca/intermediate-cert" = {
       owner = config.users.users.step-ca.name;
