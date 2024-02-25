@@ -10,6 +10,7 @@ in {
     ./hardware-configuration.nix
 
     ./services/adguardhome.nix
+    ./services/code-server.nix
     ./services/keycloak.nix
     ./services/memos.nix
     ./services/minio.nix
