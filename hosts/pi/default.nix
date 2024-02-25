@@ -18,6 +18,7 @@ in {
     ./services/postgres.nix
     ./services/step-ca.nix
     ./services/traefik.nix
+    ./services/uptime-kuma.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
