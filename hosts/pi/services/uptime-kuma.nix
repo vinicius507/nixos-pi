@@ -1,12 +1,7 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   services.uptime-kuma = {
     enable = true;
     settings = {
-      DATA_DIR = lib.mkForce "/mnt/storage/data/uptime-kuma";
       NODE_EXTRA_CA_CERTS = config.sops.secrets."services/step-ca/root-cert".path;
     };
   };
