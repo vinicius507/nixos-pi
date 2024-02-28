@@ -2,6 +2,7 @@
   services.uptime-kuma = {
     enable = true;
     settings = {
+      PORT = "3003";
       NODE_EXTRA_CA_CERTS = config.sops.secrets."services/step-ca/root-cert".path;
     };
   };
@@ -13,7 +14,7 @@
         entryPoints = ["websecure"];
       };
       services.uptime-kuma.loadBalancer.servers = [
-        {url = "http://localhost:4000";}
+        {url = "http://localhost:3003";}
       ];
     };
   };
