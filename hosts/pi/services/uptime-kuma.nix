@@ -13,7 +13,7 @@
         entryPoints = ["websecure"];
       };
       services.uptime-kuma.loadBalancer.servers = [
-        {url = "http://localhost:5230";}
+        {url = "http://localhost:4000";}
       ];
     };
   };
