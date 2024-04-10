@@ -21,7 +21,7 @@ jobs:
       - name: Run `nix build`
         run: nix build --system aarch64-linux .#sd-image
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: github.event_name == 'release'
         with:
           files: result/sd-image/*.img.zst
