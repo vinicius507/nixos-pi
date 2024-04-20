@@ -9,6 +9,7 @@ in {
   imports = [
     ./hardware-configuration.nix
 
+    ./services/actual-budget.nix
     ./services/adguardhome.nix
     ./services/code-server.nix
     ./services/keycloak.nix
