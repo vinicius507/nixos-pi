@@ -6,6 +6,7 @@
       "${config.sops.secrets."services/step-ca/root-cert".path}:/etc/ssl/certs/step-ca-root-cert.crt:ro"
     ];
     ports = ["127.0.0.1:5230:5230"];
+    extraOptions = ["--network=host"];
   };
   services.traefik.dynamicConfigOptions = {
     http = {
