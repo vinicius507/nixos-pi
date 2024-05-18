@@ -38,10 +38,22 @@
         };
       };
     };
-    dynamicConfigOptions.http.routers.traefik = {
-      rule = "Host(`traefik.dezano.io`)";
-      service = "api@internal";
-      entryPoints = ["websecure"];
+    dynamicConfigOptions.http = {
+      routers = {
+        home = {
+          rule = "Host(`dezano.io`)";
+          service = "glance";
+          entryPoints = ["websecure"];
+        };
+        traefik = {
+          rule = "Host(`traefik.dezano.io`)";
+          service = "api@internal";
+          entryPoints = ["websecure"];
+        };
+      };
+      services.glance.loadBalancer.servers = [
+        {url = "http://100.85.134.13:8080";}
+      ];
     };
   };
   systemd.services.traefik.environment = {
