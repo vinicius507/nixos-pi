@@ -3,7 +3,7 @@
   security.acme = {
     acceptTerms = true;
     defaults = {
-      email = "vinicius@myriad.codes";
+      email = "hi@viniciu507.com";
       server = "https://localhost:8000/acme/acme/directory";
     };
   };
