@@ -11,11 +11,9 @@ in {
 
     ./services/actual-budget.nix
     ./services/adguardhome.nix
-    ./services/code-server.nix
     ./services/keycloak.nix
     ./services/memos.nix
     ./services/minio.nix
-    ./services/outline.nix
     ./services/postgres.nix
     ./services/step-ca.nix
     ./services/traefik.nix
