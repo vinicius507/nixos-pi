@@ -1,10 +1,10 @@
 let
-  bind_port = 3000;
+  port = 3000;
 in {
   services.adguardhome = {
     enable = true;
     settings = {
-      inherit bind_port;
+      inherit port;
       dns = {
         bind_hosts = [
           "127.0.0.1"
@@ -18,6 +18,6 @@ in {
     http.routers.adguard.rule = "Host(`adguard.dezano.io`)";
     http.routers.adguard.service = "adguard";
     http.routers.adguard.entryPoints = ["websecure"];
-    http.services.adguard.loadBalancer.servers = [{url = "http://localhost:${toString bind_port}";}];
+    http.services.adguard.loadBalancer.servers = [{url = "http://localhost:${toString port}";}];
   };
 }
