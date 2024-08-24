@@ -2,7 +2,7 @@
   virtualisation.oci-containers.containers.actual-budget = {
     image = "actualbudget/actual-server:latest-alpine";
     volumes = [
-      "/mnt/storage/data/actual-budget:/home/coder"
+      "/mnt/storage/data/actual-budget:/data"
     ];
     ports = ["127.0.0.1:5006:5006"];
   };
@@ -22,3 +22,4 @@
     after = ["mnt-storage.mount"];
   };
 }
+
