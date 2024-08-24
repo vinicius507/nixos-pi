@@ -11,10 +11,6 @@ in {
 
     ./services/actual-budget.nix
     ./services/adguardhome.nix
-    ./services/keycloak.nix
-    ./services/memos.nix
-    ./services/minio.nix
-    ./services/postgres.nix
     ./services/step-ca.nix
     ./services/traefik.nix
     ./services/uptime-kuma.nix
