@@ -22,4 +22,3 @@
     after = ["mnt-storage.mount"];
   };
 }
-
