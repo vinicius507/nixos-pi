@@ -1,6 +1,6 @@
 {config, ...}: {
   virtualisation.oci-containers.containers.actual-budget = {
-    image = "actualbudget/actual-server:latest-alpine";
+    image = "actualbudget/actual-server:latest-alpine@sha256:37150a88840a618ba352a7d4f71a257a1bc5f235eed95e8c30581375396bf2d5";
     volumes = [
       "/mnt/storage/data/actual-budget:/data"
     ];
