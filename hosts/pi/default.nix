@@ -11,6 +11,7 @@ in {
 
     ./services/actual-budget.nix
     ./services/adguardhome.nix
+    ./services/ntfy-sh.nix
     ./services/step-ca.nix
     ./services/traefik.nix
     ./services/uptime-kuma.nix
