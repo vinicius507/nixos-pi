@@ -15,6 +15,7 @@ in {
     ./services/step-ca.nix
     ./services/traefik.nix
     ./services/uptime-kuma.nix
+    ./services/vaultwarden.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
