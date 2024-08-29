@@ -57,6 +57,7 @@
     '';
     environment = {
       APP_PORT = "8001";
+      PHP_MEMORY_LIMIT = "512M";
     };
     after = [
       "docker.service"
