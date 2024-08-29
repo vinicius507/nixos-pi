@@ -4,7 +4,7 @@ in {
   users.users.step-ca.extraGroups = ["www"];
   services.step-ca = {
     enable = true;
-    address = "127.0.0.1";
+    address = "0.0.0.0";
     port = 8000;
     intermediatePasswordFile = secrets."services/step-ca/intermediate-password".path;
     settings = {
