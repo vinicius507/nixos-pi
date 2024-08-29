@@ -30,7 +30,12 @@ in {
   documentation.man.enable = true;
   documentation.dev.enable = true;
 
-  networking.hostName = "pi";
+  networking = {
+    hostName = "pi";
+    firewall.trustedInterfaces = [
+      "docker0"
+    ];
+  };
 
   nixpkgs.config.allowUnfree = true;
 
