@@ -8,7 +8,7 @@ in {
     port = 8000;
     intermediatePasswordFile = secrets."services/step-ca/intermediate-password".path;
     settings = {
-      dnsNames = ["ca.dezano.io" "localhost"];
+      dnsNames = ["ca.dezano.io" "host.docker.internal" "localhost"];
       root = secrets."services/step-ca/root-cert".path;
       crt = secrets."services/step-ca/intermediate-cert".path;
       key = secrets."services/step-ca/intermediate-key".path;
