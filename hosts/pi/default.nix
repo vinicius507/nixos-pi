@@ -9,13 +9,10 @@ in {
   imports = [
     ./hardware-configuration.nix
 
-    ./services/actual-budget.nix
     ./services/adguardhome.nix
     ./services/coolify.nix
-    ./services/ntfy-sh.nix
     ./services/step-ca.nix
     ./services/traefik.nix
-    ./services/uptime-kuma.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"

@@ -54,6 +54,7 @@
         -f /mnt/storage/data/coolify/source/docker-compose.yml \
         -f /mnt/storage/data/coolify/source/docker-compose.prod.yml \
         up --pull always --remove-orphans --force-recreate
+      # TODO: Remove pull always
     '';
     environment = {
       APP_PORT = "8001";

@@ -8,7 +8,7 @@
     };
   };
   services.traefik = {
-    enable = true;
+    enable = false;
     group = config.users.groups.www.name;
     staticConfigOptions = {
       api.dashboard = true;
