@@ -60,7 +60,10 @@ in {
     };
   };
 
-  virtualisation.oci-containers.backend = "docker";
+  virtualisation = {
+    docker.enable = true;
+    oci-containers.backend = "docker";
+  };
 
   sops.defaultSopsFile = ../../secrets/default.yaml;
 
