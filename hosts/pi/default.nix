@@ -12,7 +12,6 @@ in {
     ./services/adguardhome.nix
     ./services/coolify.nix
     ./services/step-ca.nix
-    ./services/traefik.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
@@ -28,9 +27,17 @@ in {
 
   networking = {
     hostName = "pi";
-    firewall.trustedInterfaces = [
-      "docker0"
-    ];
+    firewall = {
+      trustedInterfaces = ["docker0"];
+      extraCommands = ''
+        iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept
+        iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept
+      '';
+      extraStopCommands = ''
+        iptables -D nixos-fw -p tcp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept || true
+        iptables -D nixos-fw -p udp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept || true
+      '';
+    };
   };
 
   nixpkgs.config.allowUnfree = true;

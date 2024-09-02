@@ -1,7 +1,17 @@
 {config, ...}: let
   inherit (config.sops) secrets;
 in {
-  users.users.step-ca.extraGroups = ["www"];
+  users = {
+    users.step-ca.extraGroups = ["www"];
+    groups.www = {};
+  };
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "hi@viniciu507.com";
+      server = "https://localhost:8000/acme/acme/directory";
+    };
+  };
   services.step-ca = {
     enable = true;
     address = "0.0.0.0";
