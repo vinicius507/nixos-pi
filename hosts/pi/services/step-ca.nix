@@ -1,14 +1,24 @@
 {config, ...}: let
   inherit (config.sops) secrets;
 in {
-  users.users.step-ca.extraGroups = ["www"];
+  users = {
+    users.step-ca.extraGroups = ["www"];
+    groups.www = {};
+  };
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "hi@viniciu507.com";
+      server = "https://localhost:8000/acme/acme/directory";
+    };
+  };
   services.step-ca = {
     enable = true;
-    address = "127.0.0.1";
+    address = "0.0.0.0";
     port = 8000;
     intermediatePasswordFile = secrets."services/step-ca/intermediate-password".path;
     settings = {
-      dnsNames = ["ca.dezano.io" "localhost"];
+      dnsNames = ["ca.dezano.io" "host.docker.internal" "localhost"];
       root = secrets."services/step-ca/root-cert".path;
       crt = secrets."services/step-ca/intermediate-cert".path;
       key = secrets."services/step-ca/intermediate-key".path;
@@ -21,6 +31,7 @@ in {
           dns = ["*.dezano.io"];
           ip = [
             "100.64.0.0/10"
+            "172.17.0.0/16"
             "192.168.1.0/24"
           ];
         };

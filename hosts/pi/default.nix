@@ -9,13 +9,9 @@ in {
   imports = [
     ./hardware-configuration.nix
 
-    ./services/actual-budget.nix
     ./services/adguardhome.nix
-    ./services/ntfy-sh.nix
+    ./services/coolify.nix
     ./services/step-ca.nix
-    ./services/traefik.nix
-    ./services/uptime-kuma.nix
-    ./services/vaultwarden.nix
 
     "${outPath}/hosts/shared/locale.nix"
     "${outPath}/hosts/shared/networking.nix"
@@ -29,7 +25,20 @@ in {
   documentation.man.enable = true;
   documentation.dev.enable = true;
 
-  networking.hostName = "pi";
+  networking = {
+    hostName = "pi";
+    firewall = {
+      trustedInterfaces = ["docker0"];
+      extraCommands = ''
+        iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept
+        iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept
+      '';
+      extraStopCommands = ''
+        iptables -D nixos-fw -p tcp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept || true
+        iptables -D nixos-fw -p udp --source 192.168.1.0/24 --dport 80,443 -j nixos-fw-accept || true
+      '';
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -58,7 +67,10 @@ in {
     };
   };
 
-  virtualisation.oci-containers.backend = "docker";
+  virtualisation = {
+    docker.enable = true;
+    oci-containers.backend = "docker";
+  };
 
   sops.defaultSopsFile = ../../secrets/default.yaml;
 
